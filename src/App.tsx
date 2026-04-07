@@ -6,18 +6,20 @@ import { pages } from "./constants/page.constants";
 import { useCats } from "./hooks/useCat";
 import type { CatResponse } from "./types/cat.types";
 import { storageService } from "./services/storage.service";
+import { Loader } from "./components/ui/Loader";
 
 interface GetCatsProps {
   page: string;
   cats: CatResponse[];
   savedCats: CatResponse[];
   ref: RefObject<HTMLDivElement | null>;
+  isLoading?: boolean
 }
 
-function GetCats({ page, cats, savedCats, ref }: GetCatsProps) {
+function GetCats({ page, cats, savedCats, ref, isLoading }: GetCatsProps) {
   return (
     <>
-      {page === "Все котики" && <MainPage cats={cats} ref={ref} />}
+      {page === "Все котики" && (isLoading ? <Loader /> : <MainPage cats={cats} ref={ref} />)}
 
       {page === "Любимые котики" && <MainPage cats={savedCats} />}
     </>
@@ -69,6 +71,7 @@ function App() {
           cats={cats ? cats : []}
           savedCats={savedCats}
           ref={loadMoreRef}
+          isLoading={isLoading}
         />
       )}
     </>

@@ -1,10 +1,8 @@
-
-
 .catContainers {
     width: 90%;
     margin: 40px auto;
+    padding-bottom: 40px;
 
-    justify-content: space-between;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -12,12 +10,10 @@
     gap: 40px
 }
 
-
 .emptyData {
     font-family: "Roboto";
     font-size: 15px;
 }
-
 
 @media (max-width: 1100px) {
     .catContainers {
